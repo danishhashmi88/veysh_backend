@@ -1,0 +1,15 @@
+node_modules
+.env
+config
+public/uploads
+.DS_Store
+
+package-lock.json
+eng.traineddata
+logs/app.log
+firebase/serviceAccountKey.json
+reference.txtb
+
+# Apple In-App Purchase Auth Key
+config/AuthKey_86U83Z6KMK.p8
+logs/app.log

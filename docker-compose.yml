@@ -1,0 +1,25 @@
+services:
+  online-closet_backend:
+    container_name: online-closet_backend
+    image: online-closet_backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - HOST=0.0.0.0
+      - PORT=17085
+      - NODE_ENV=production
+      - UPLOAD_PATH=/usr/src/app/public/uploads   # match internal path in Dockerfile
+    ports:
+      - "17085:17085"
+    env_file:
+      - /var/www/online-closet.devtechnosys.tech/Backend/.env
+    restart: unless-stopped
+    volumes:
+      # Mount host uploads folder to container uploads folder
+      - /var/www/online-closet.devtechnosys.tech/Backend/public/uploads:/usr/src/app/public/uploads:rw
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
